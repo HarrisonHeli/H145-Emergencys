@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#2196F3">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Sentence Timer">
+    
+    <title>Sentence Timer App</title>
+    
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <link rel="icon" type="image/png" href="icons/icon-192.png">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <h1>⏱️ H145C2 Emergency Trainer</h1>
+            <button id="installBtn" class="install-btn" style="display: none;">
+                Install App
+            </button>
+        </header>
+
+        <!-- Main Content -->
+        <main class="app-main">
+            
+            <!-- Start Screen -->
+            <div id="startScreen" class="screen active">
+                <div class="card welcome-card">
+                    <h2>Welcome!</h2>
+                    <p>Click the button below to get a random emergency and start the timer to see how long it takes to find the Emergency in the book.</p>
+		<p> </p>
+                    <button id="startBtn" class="btn btn-primary btn-large">
+                        🎲 Get Random Emergency
+                    </button>
+                </div>
+
+                <!-- Export Buttons -->
+                <div class="card export-card">
+                    <h3>📥 Export Data</h3>
+                    <div class="export-buttons">
+                        <button id="downloadLogBtn" class="btn btn-secondary">
+                            📄 Download Log (TXT)
+                        </button>
+                        <button id="exportCSVBtn" class="btn btn-secondary">
+                            📊 Export CSV
+                        </button>
+                        <button id="exportJSONBtn" class="btn btn-secondary">
+                            📋 Export JSON
+                        </button>
+                    </div>
+                </div>
+
+                <!-- History Section -->
+                <div class="card" id="historyCard" style="display: none;">
+                    <h3>📊 Session History</h3>
+                    <button id="clearHistoryBtn" class="btn btn-secondary btn-small">Clear History</button>
+                    <div id="historyList"></div>
+                </div>
+            </div>
+
+            <!-- Find Timer Screen -->
+            <div id="findTimerScreen" class="screen">
+                <div class="card sentence-card">
+                    <div class="sentence-label">Given Emergency:</div>
+                    <div id="sentenceDisplay" class="sentence-display"></div>
+                </div>
+
+                <div class="card timer-card">
+                    <div class="timer-label">Re-Call the Inital Actions and find the Emergency checks</div>
+                    <div id="findTimerDisplay" class="timer-display">00:00:00</div>
+                    <div class="timer-milliseconds" id="findMilliseconds">000</div>
+                    <button id="stopFindBtn" class="btn btn-danger btn-large">
+                        ⏹️ I Found the Emergency - Stop the Find Timer
+                    </button>
+                </div>
+            </div>
+
+            <!-- Review Timer Screen -->
+            <div id="reviewTimerScreen" class="screen">
+                <div class="card sentence-card">
+                    <div class="sentence-label">Given Emergency:</div>
+                    <div id="sentenceDisplayReview" class="sentence-display"></div>
+                </div>
+
+                <div class="card timer-card">
+                    <div class="timer-label">Review Timer</div>
+                    <div id="reviewTimerDisplay" class="timer-display">00:00:00</div>
+                    <div class="timer-milliseconds" id="reviewMilliseconds">000</div>
+                    <button id="stopReviewBtn" class="btn btn-danger btn-large">
+                        ⏹️ Stop Review Timer
+                    </button>
+                </div>
+
+                <div class="card info-card">
+                    <div class="info-row">
+                        <span class="info-label">Find Time:</span>
+                        <span id="findTimeResult" class="info-value">--</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results Screen -->
+            <div id="resultsScreen" class="screen">
+                <div class="card results-card">
+                    <h2>✅ Session Complete!</h2>
+                    
+                    <div class="result-item">
+                        <div class="result-label">Given Emergency:</div>
+                        <div id="resultSentence" class="result-sentence"></div>
+                    </div>
+
+                    <div class="result-item">
+                        <div class="result-label">Find Time:</div>
+                        <div id="resultFindTime" class="result-value"></div>
+                    </div>
+
+                    <div class="result-item">
+                        <div class="result-label">Review Time:</div>
+                        <div id="resultReviewTime" class="result-value"></div>
+                    </div>
+
+                    <div class="result-item">
+                        <div class="result-label">Total Time:</div>
+                        <div id="resultTotalTime" class="result-value total"></div>
+                    </div>
+
+                    <button id="newSessionBtn" class="btn btn-primary btn-large">
+                        🔄 Start New Session
+                    </button>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <p>Sentence Timer App • v1.0.0</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
